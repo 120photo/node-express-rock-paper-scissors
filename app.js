@@ -37,16 +37,22 @@ app.get('/weapons/:name', function(req, res) {
   if (req.params.name === "rock") {
     if (computerDraw === "rock" ) {
       res.render('game_play', {
-        message: "Computer Drew Rock - Draw, No Points"
+        message: "Computer Drew Rock - Draw, No Points",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
     } else if ( computerDraw === "paper") {
       res.render('game_play', {
-        message: "Computer Drew Paper - Your Lose"
+        message: "Computer Drew Paper - Your Lose",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gameComputer++;
     } else {
       res.render('game_play', {
-        message: 'Computer Drew Scissors - You Win'
+        message: 'Computer Drew Scissors - You Win',
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gamePlayer++;
     }
@@ -56,16 +62,22 @@ app.get('/weapons/:name', function(req, res) {
     // res.send(req.params.name + " beats rock");
     if (computerDraw === "paper" ) {
       res.render('game_play', {
-        message: "Computer Drew Paper - Draw, No Points"
+        message: "Computer Drew Paper - Draw, No Points",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
     } else if ( computerDraw === "scissors") {
       res.render('game_play', {
-        message: "Computer Drew Scissors - Your Lose"
+        message: "Computer Drew Scissors - Your Lose",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gameComputer++;
     } else {
       res.render('game_play', {
-        message: 'Computer Drew Rock - You Win'
+        message: 'Computer Drew Rock - You Win',
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gamePlayer++;
     }
@@ -74,16 +86,22 @@ app.get('/weapons/:name', function(req, res) {
   else if (req.params.name === "scissors") {
     if (computerDraw === "scissors" ) {
       res.render('game_play', {
-        message: "Computer Drew Scissors - Draw, No Points"
+        message: "Computer Drew Scissors - Draw, No Points",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
     } else if ( computerDraw === "rock") {
       res.render('game_play', {
-        message: "Computer Drew Rock - Your Lose"
+        message: "Computer Drew Rock - Your Lose",
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gameComputer++;
     } else {
       res.render('game_play', {
-        message: 'Computer Drew Paper - You Win'
+        message: 'Computer Drew Paper - You Win',
+        scorePlayer: gamePlayer,
+        scoreComputer: gameComputer
       });
       gamePlayer++;
     }
@@ -92,7 +110,9 @@ app.get('/weapons/:name', function(req, res) {
   else {
     // res.send(req.params.name + " is not an option, you lose.");
     res.render('game_play', {
-      message: 'That is not an option, try again with a legit option'
+      message: 'That is not an option, try again with a legit option',
+      scorePlayer: gamePlayer,
+      scoreComputer: gameComputer
     });
   }
 
