@@ -22,7 +22,9 @@ app.get('/', function (req, res) {
   // res.send("computer guessed " + computerGuess());
   res.render('index', {
     title: 'RoShamBo',
-    message: computerGuess()
+    message: 'Play the game by choosing your weapon...',
+    scorePlayer: gamePlayer,
+    scoreComputer: gameComputer
   });
 });
 
@@ -34,16 +36,16 @@ app.get('/weapons/:name', function(req, res) {
   // player chooses rock
   if (req.params.name === "rock") {
     if (computerDraw === "rock" ) {
-      res.render('game-play', {
+      res.render('game_play', {
         message: "Computer Drew Rock - Draw, No Points"
       });
     } else if ( computerDraw === "paper") {
-      res.render('gamegame-play', {
+      res.render('game_play', {
         message: "Computer Drew Paper - Your Lose"
       });
       gameComputer++;
     } else {
-      res.render('game-play', {
+      res.render('game_play', {
         message: 'Computer Drew Scissors - You Win'
       });
       gamePlayer++;
@@ -53,16 +55,16 @@ app.get('/weapons/:name', function(req, res) {
   else if (req.params.name === "paper") {
     // res.send(req.params.name + " beats rock");
     if (computerDraw === "paper" ) {
-      res.render('game-play', {
+      res.render('game_play', {
         message: "Computer Drew Paper - Draw, No Points"
       });
     } else if ( computerDraw === "scissors") {
-      res.render('gamegame-play', {
+      res.render('game_play', {
         message: "Computer Drew Scissors - Your Lose"
       });
       gameComputer++;
     } else {
-      res.render('game-play', {
+      res.render('game_play', {
         message: 'Computer Drew Rock - You Win'
       });
       gamePlayer++;
@@ -71,16 +73,16 @@ app.get('/weapons/:name', function(req, res) {
   // player chooses scissors
   else if (req.params.name === "scissors") {
     if (computerDraw === "scissors" ) {
-      res.render('game-play', {
+      res.render('game_play', {
         message: "Computer Drew Scissors - Draw, No Points"
       });
     } else if ( computerDraw === "rock") {
-      res.render('gamegame-play', {
+      res.render('game_play', {
         message: "Computer Drew Rock - Your Lose"
       });
       gameComputer++;
     } else {
-      res.render('game-play', {
+      res.render('game_play', {
         message: 'Computer Drew Paper - You Win'
       });
       gamePlayer++;
@@ -89,7 +91,7 @@ app.get('/weapons/:name', function(req, res) {
   // in case player is trying to be sneaky
   else {
     // res.send(req.params.name + " is not an option, you lose.");
-    res.render('game-play', {
+    res.render('game_play', {
       message: 'That is not an option, try again with a legit option'
     });
   }

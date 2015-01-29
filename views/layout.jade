@@ -6,5 +6,18 @@ html
   body
     .jumbotron
       h1 Rock Paper Scissors: The Game
+    .container
+      .row
+        .col-md-4
+          a(href='/weapons/rock', class='btn btn-default') Rock
+        .col-md-4
+          a(href="/weapons/paper", class='btn btn-default') Paper
+        .col-md-4
+          a(href="/weapons/scissors", class='btn btn-default') Scissors
     block content
+    
+    .container
+      .footer
+        a(href="/") home
+        p Your Score: #{scorePlayer} | Computers Score: #{scoreComputer}
     
