@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+app.set('views', __dirname+'/views');
 app.set('view engine', 'jade');
 
 // list of weapons for rock paper scissors
@@ -28,16 +29,69 @@ app.get('/', function (req, res) {
 // routing for player choises of weapons
 // and setup basic logic
 app.get('/weapons/:name', function(req, res) {
-  computer = computerGuess();
+  computerDraw = computerGuess();
   player = req.params.name;
+  // player chooses rock
   if (req.params.name === "rock") {
-    res.send(req.params.name + " beats scissors");
-  } else if (req.params.name === "paper") {
-    res.send(req.params.name + " beats rock");
-  } else if (req.params.name === "scissors") {
-    res.send(req.params.name + " beats paper");
-  } else {
-    res.send(req.params.name + " is not an option, you lose.");
+    if (computerDraw === "rock" ) {
+      res.render('game-play', {
+        message: "Computer Drew Rock - Draw, No Points"
+      });
+    } else if ( computerDraw === "paper") {
+      res.render('gamegame-play', {
+        message: "Computer Drew Paper - Your Lose"
+      });
+      gameComputer++;
+    } else {
+      res.render('game-play', {
+        message: 'Computer Drew Scissors - You Win'
+      });
+      gamePlayer++;
+    }
+  }
+  // player chooses paper
+  else if (req.params.name === "paper") {
+    // res.send(req.params.name + " beats rock");
+    if (computerDraw === "paper" ) {
+      res.render('game-play', {
+        message: "Computer Drew Paper - Draw, No Points"
+      });
+    } else if ( computerDraw === "scissors") {
+      res.render('gamegame-play', {
+        message: "Computer Drew Scissors - Your Lose"
+      });
+      gameComputer++;
+    } else {
+      res.render('game-play', {
+        message: 'Computer Drew Rock - You Win'
+      });
+      gamePlayer++;
+    }
+  }
+  // player chooses scissors
+  else if (req.params.name === "scissors") {
+    if (computerDraw === "scissors" ) {
+      res.render('game-play', {
+        message: "Computer Drew Scissors - Draw, No Points"
+      });
+    } else if ( computerDraw === "rock") {
+      res.render('gamegame-play', {
+        message: "Computer Drew Rock - Your Lose"
+      });
+      gameComputer++;
+    } else {
+      res.render('game-play', {
+        message: 'Computer Drew Paper - You Win'
+      });
+      gamePlayer++;
+    }
+  }
+  // in case player is trying to be sneaky
+  else {
+    // res.send(req.params.name + " is not an option, you lose.");
+    res.render('game-play', {
+      message: 'That is not an option, try again with a legit option'
+    });
   }
 
 });
