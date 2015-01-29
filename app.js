@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'jade');
+
 // list of weapons for rock paper scissors
 var weapons = ['rock', 'paper', 'scissors'];
 
@@ -16,12 +18,15 @@ var gamePlayer = 0;
 
 // setup a simple root page that outputs computer's guess
 app.get('/', function (req, res) {
-  res.send("computer guessed " + computerGuess());
+  // res.send("computer guessed " + computerGuess());
+  res.render('index', {title: 'RoShamBo', message: computerGuess()})
 });
 
 // routing for player choises of weapons
 // and setup basic logic
 app.get('/weapons/:name', function(req, res) {
+  computer = computerGuess();
+  player = req.params.name;
   if (req.params.name === "rock") {
     res.send(req.params.name + " beats scissors");
   } else if (req.params.name === "paper") {
