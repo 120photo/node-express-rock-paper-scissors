@@ -19,7 +19,10 @@ var gamePlayer = 0;
 // setup a simple root page that outputs computer's guess
 app.get('/', function (req, res) {
   // res.send("computer guessed " + computerGuess());
-  res.render('index', {title: 'RoShamBo', message: computerGuess()})
+  res.render('index', {
+    title: 'RoShamBo',
+    message: computerGuess()
+  });
 });
 
 // routing for player choises of weapons
