@@ -99,6 +99,6 @@ app.get('/weapons/:name', function(req, res) {
 });
 
 // basic server settings
-var server = app.listen(3000, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
   console.log('server is listening on port', server.address().port);
 });
